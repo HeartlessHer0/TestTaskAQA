@@ -28,7 +28,6 @@ public class ProfilePage extends BasePage {
     public WebElement getUsername() {
         return waitsService.waitForVisibilityLocatedBy(userNameLocator);
     }
-
     public WebElement getLogoutButton() {
         return waitsService.waitForVisibilityLocatedBy(logoutButtonLocator);
     }

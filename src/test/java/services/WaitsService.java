@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class WaitsService {
 
@@ -19,31 +18,12 @@ public class WaitsService {
         this.driver = driver;
     }
 
-    public WebElement waitForVisibility(WebElement element) {
-        return wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
     public WebElement waitForVisibilityLocatedBy(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-    public List<WebElement> waitForAllVisibilityLocatedBy(By locator) {
-        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     public WebElement waitForPresenceOfElement(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public boolean waitForElementInvisible(WebElement element) {
-        return wait.until(ExpectedConditions.invisibilityOf(element));
-    }
-
-    public WebElement waitForClickableElement(By locator) {
-        return wait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
-
-    public Boolean waitForInvisibilityElement(By locator) {
-        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-    }
 }

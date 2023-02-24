@@ -32,24 +32,13 @@ public class LoginPage extends BasePage {
     public WebElement getUsernameInput() {
         return waitsService.waitForVisibilityLocatedBy(emailInputLocator);
     }
-
     public WebElement getPswInput() {
         return waitsService.waitForVisibilityLocatedBy(pswInputLocator);
     }
-
     public WebElement getLoginButton() {
         return waitsService.waitForVisibilityLocatedBy(logInSubmitButtonLocator);
     }
-
-    public WebElement getPasswordIsNullElement() {
-        return waitsService.waitForVisibilityLocatedBy(passwordIsNullTextLocator);
-    }
-
-    public WebElement getUsernameIsNullElement() {
-        return waitsService.waitForVisibilityLocatedBy(usernameIsNullTextLocator);
-    }
-
-    public WebElement getInvalidUsernameOrPasswordMessageElement () {
-        return waitsService.waitForVisibilityLocatedBy(invalidUsernameOrPasswordLocator);
-    }
+    public WebElement getPasswordIsNullElement() { return waitsService.waitForVisibilityLocatedBy(passwordIsNullTextLocator); }
+    public WebElement getUsernameIsNullElement() { return waitsService.waitForVisibilityLocatedBy(usernameIsNullTextLocator); }
+    public WebElement getInvalidUsernameOrPasswordMessageElement () { return waitsService.waitForVisibilityLocatedBy(invalidUsernameOrPasswordLocator); }
 }

@@ -4,7 +4,6 @@ import configuration.ReadProperties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import services.WaitsService;
-
 import java.time.Duration;
 
 public abstract class BasePage {
