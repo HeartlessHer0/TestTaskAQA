@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void successLoginTest() {
         logger.info("Success Login test is started");
-        Assert.assertTrue(loginStep.successLogin(ReadProperties.username(),ReadProperties.password()).isPageOpened());
+        Assert.assertTrue(loginStep.successLogin(user.getString("userName"),ReadProperties.password()).isPageOpened());
         logger.info("Success Login test is passed");
     }
     @Test
@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
         logger.info("Incorrect Username Login test is started");
         Assert.assertTrue(
                 loginStep.incorrectLogin(
-                        ReadProperties.username(), ReadProperties.username()).getInvalidUsernameOrPasswordMessageElement().isDisplayed());
+                        user.getString("userName"), ReadProperties.username()).getInvalidUsernameOrPasswordMessageElement().isDisplayed());
         logger.info("Incorrect Username Login test is passed");
     }
 
@@ -46,7 +46,7 @@ public class LoginTest extends BaseTest {
     public void passwordIsNullLoginTest() {
         logger.info("Login without Password Test is started");
         Assert.assertTrue(
-                loginStep.loginWithoutPassword( ReadProperties.username(), "").getPasswordIsNullElement().isDisplayed());
+                loginStep.loginWithoutPassword( user.getString("userName"), "").getPasswordIsNullElement().isDisplayed());
         logger.info("Login without Password Test is passed");
     }
     @Test

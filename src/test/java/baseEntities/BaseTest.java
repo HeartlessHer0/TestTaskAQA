@@ -1,9 +1,12 @@
 package baseEntities;
 
+
 import configuration.Endpoints;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.json.JSONObject;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import steps.LoginStep;
@@ -30,8 +33,29 @@ public class BaseTest {
 
     public List<String> titles = new ArrayList<>();
 
+    protected JSONObject user = new JSONObject();
+
+    String RandomString = RandomStringUtils.randomAlphabetic(10);
+
+
 
     @BeforeSuite
+    public void addUser() {
+        user.put("userName",RandomString);
+        user.put("password", ReadProperties.password());
+        logger.info("User Generated");
+
+        RestAssured.given().
+                header("Content-Type", "application/json")
+                .body(user.toString())
+                .when()
+                .post(ReadProperties.getUrl()+Endpoints.ADD_USER)
+                .then()
+                .log().all()
+                .statusCode(201);
+        logger.info("User with username: "+user.get("userName") +" is added");
+    }
+   @BeforeSuite
     public void bookTitles() {
        JsonPath books = RestAssured
                 .given()
@@ -45,7 +69,7 @@ public class BaseTest {
         logger.info("Book titles added to the List");
     }
 
-    @BeforeMethod
+  @BeforeMethod
     public void setup() {
         driver = new BrowsersService().getDriver();
 
@@ -57,7 +81,7 @@ public class BaseTest {
 
     }
 
-   @AfterMethod
+ @AfterMethod
     public void tearDown() {
         Allure.getLifecycle().addAttachment(
                 "screenshot", "image/png", "png",
