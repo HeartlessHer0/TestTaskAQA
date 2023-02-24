@@ -14,11 +14,13 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void successLoginTest() {
+        logger.info("Success Login test is started");
         Assert.assertTrue(loginStep.successLogin(ReadProperties.username(),ReadProperties.password()).isPageOpened());
         logger.info("Success Login test is passed");
     }
     @Test
     public void incorrectUsernameLoginTest() {
+        logger.info("Incorrect Username Login test is started");
         Assert.assertTrue(
                 loginStep.incorrectLogin(
                         ReadProperties.browserName(), ReadProperties.password()).getInvalidUsernameOrPasswordMessageElement().isDisplayed());
@@ -26,6 +28,7 @@ public class LoginTest extends BaseTest {
     }
     @Test
     public void incorrectPasswordLoginTest() {
+        logger.info("Incorrect Username Login test is started");
         Assert.assertTrue(
                 loginStep.incorrectLogin(
                         ReadProperties.username(), ReadProperties.username()).getInvalidUsernameOrPasswordMessageElement().isDisplayed());
@@ -34,18 +37,21 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void usernameIsNullLoginTest() {
+        logger.info("Login without Username Test is started");
         Assert.assertTrue(
                 loginStep.loginWithoutUsername( "", ReadProperties.password()).getUsernameIsNullElement().isDisplayed());
         logger.info("Login without Username Test is passed");
     }
     @Test
     public void passwordIsNullLoginTest() {
+        logger.info("Login without Password Test is started");
         Assert.assertTrue(
                 loginStep.loginWithoutPassword( ReadProperties.username(), "").getPasswordIsNullElement().isDisplayed());
         logger.info("Login without Password Test is passed");
     }
     @Test
     public void passwordAndUsernameIsNullLoginTest() {
+        logger.info("Login without Username and Password Test is started");
         Assert.assertTrue(
                 loginStep.loginWithoutUsernameAndPassword().getPasswordIsNullElement().isDisplayed());
         logger.info("Login without Username and Password Test is passed");
