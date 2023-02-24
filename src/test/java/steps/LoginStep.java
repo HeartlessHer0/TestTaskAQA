@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.ProfilePage;
-import test.BooksTest;
 
 public class LoginStep extends BaseStep {
     private static final Logger logger = LogManager.getLogger(LoginStep.class);
@@ -34,8 +33,11 @@ public class LoginStep extends BaseStep {
         driver.get(loginPage.getLoginPageURL());
         logger.info("Login Page is opened");
         loginPage.getUsernameInput().sendKeys(username);
+        logger.info(username+" value is written in the Username field");
         loginPage.getPswInput().sendKeys(password);
+        logger.info(password+" value is written in the Password field");
         loginPage.getLoginButton().click();
+        logger.info("Login button is clicked");
     }
     public LoginPage loginWithoutUsernameAndPassword(){
         driver.get(loginPage.getLoginPageURL());
