@@ -7,8 +7,7 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONObject;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import steps.LoginStep;
 import steps.BooksTitleCheckingStep;
 import configuration.ReadProperties;
@@ -18,7 +17,6 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeMethod;
 import services.BrowsersService;
 
 import java.util.ArrayList;
@@ -37,9 +35,7 @@ public class BaseTest {
 
     String RandomString = RandomStringUtils.randomAlphabetic(10);
 
-
-
-    @BeforeSuite
+    @BeforeTest
     public void addUser() {
         user.put("userName",RandomString);
         user.put("password", ReadProperties.password());
